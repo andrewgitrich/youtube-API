@@ -15,7 +15,7 @@ function getRequest(searchTerm){
 			key: "AIzaSyAsTnVYWq6OVMfgU0NzBxjJlLDtwi34jPc",
 			q: searchTerm	 
 		};
-		url = "https://www.googleapis.com/youtube/v3/search";
+		var url = "https://www.googleapis.com/youtube/v3/search";
 
 	$.getJSON(url, params, function(data){
 		showResults(data.items);
@@ -26,14 +26,15 @@ function getRequest(searchTerm){
 function showResults(results){
 	
 	$.each(results, function(index, value){
-		var x = value.snippet.thumbnails.medium.url;
-		$('ul').append("<li>" + <img src="x"> + "</li>");
+		var thumbnail_url = value.snippet.thumbnails.medium.url;
+		var title = value.snippet.title;
+		$('ul').append('<li><img src="' + thumbnail_url + '">  </li>' + "<p>" + title + "</p>");
 		
-		console.log(x);
-
-	});
+		console.log(value.snippet.title);
+		
+		});	
+	}
 	
-}
 
 });
  
